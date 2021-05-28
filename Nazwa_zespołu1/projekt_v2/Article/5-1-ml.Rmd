@@ -19,14 +19,13 @@ The datasets from corresponding articles contained 3 previously highlighted feat
 
 
 Table 1 contains all most important information about each of datasets and shows which of them contains features needed to create models.
-
-| Article         | Records | Variables | Lactate Dehydrogenase| High reactive C protein | Lymphocytes    | Neutrophil | Age |
-|-----------------|:-------:|:---------:|:-------------------:|:-----------------------:|:--------------:|:----------:|:---:|
-|[@yan_et_al_2020]|485      |81         | Yes                 | Yes                     | Yes            | Yes        | Yes |
-|[@5-2-newyork]   |1038     |14         | Yes                 | Yes                     | Yes            | No         | No  |
-|[@5-2-netherlands]     |305      |15         | Yes                 | Yes                     | Yes            | No         | Yes |
-|[@5-2-france]    |178      |43         | Yes                 | Yes                     | Yes            | No         | Yes |
-|[@5-1-ZHENG2020100092]|214  |33      | Yes                 | Yes                     | Yes            | Yes        | Yes |
+| Article         | Records | Variables | Lactate Dehyd.|C-protein | Lymphocytes| Neutrophil | Age |
+|-----------------|:-------:|:---------:|:--------------:|:--------:|:----------:|:----------:|:---:|
+|[@yan_et_al_2020]|485|81|Yes|Yes|Yes|Yes| Yes |
+|[@5-2-newyork]   |1038|14|Yes|Yes|Yes|No| No  |
+|[@5-2-netherlands]|305|15|Yes|Yes|Yes|No| Yes |
+|[@5-2-france]    |178|43| Yes|Yes|Yes|No| Yes |
+|[@5-1-ZHENG2020100092]|214|33|Yes|Yes|Yes| Yes| Yes |
 
 Careful inspection of distributions of these key variables from various articles helps to understand problem with applying model form [china] on dataset from corresponding articles.
 
