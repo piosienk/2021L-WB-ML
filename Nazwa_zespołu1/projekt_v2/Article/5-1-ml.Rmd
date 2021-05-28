@@ -4,7 +4,7 @@
 
 
 ### Abstract
-The work of [@yan_et_al_2020] from the first months of the COVID-19 pandemic laid the foundations for further research in the area of machine learning models for patients classification by introducing a simple decision tree that in the opinion of the inventors resolved the whole issue. Since that time a few papers have emerged that touch upon the same case in which other reseachers tested this decision tree on their datasets. Their findings that the original model is not suitable for patients from other countries than China appeared interesting to us and hence in the following paper we present results of our work which aim was to build models on each of the considered datasets as well as on all of them combined in order to find an universal approach for classification of patients from various countries. After testing various models such as XGBoost, Logistic Regression, SVM and Tabnet we came up with the conclusion that there is no one model for all of the datasets that includes only at most 5 crucial variables.
+The work of [@yan_et_al_2020] from the first months of the COVID-19 pandemic laid the foundations for further research in the area of machine learning models that predict patients’ chances of survival. It was done by introducing a simple decision tree that in the opinion of the inventors could potentially support the cause. Since that time a few papers have emerged that touch upon the same case in which other researchers tested this decision tree on their datasets. Their findings that the original model is not suitable for patients from other countries than China appeared interesting to us and hence in the following paper we present results of our work which aim was to build models on each of the considered datasets as well as on all of them combined in order to find an universal approach for classification of patients from various countries. After testing various models such as XGBoost, Logistic Regression, SVM and Tabnet we came up with the conclusion that there is no one model for all of the datasets that includes only at most 4 crucial variables.
 
 
 ### Introduction
@@ -112,3 +112,7 @@ Overall, XGBoost with the hyperparameters proposed by Zichao Zheng et al. but tr
 knitr::include_graphics('images/5-1-AUPRC2.png')
 ```
 ### Conclusions
+
+Summing up, the first conclusion is that the original decision tree is not an algorithm that can be universally used to assess chances of survival of any patient around the world. The fact that the blood characteristics vary with ethnic groups is significant and therefore usage of some additional variables can improve the models’ predictive capabilities. This is not what the authors of [@yan_et_al_2020] expected but adding Age or Neutrophil variables to the set indeed boosted the performance. Hence, the intuitive windup would be that the best model is the XGBoost with Age variable since it gets high results according to multiple metrics but it is not that simple. For example its precision is significantly lower in comparison to the Tabnet model prepared on the merged datasets.
+
+Therefore, what should be learned from this paper is that none of the proposed models that were validated and compared by us should be used on other datasets than those on which they were trained.
