@@ -101,7 +101,7 @@ Table: Table 2: XGBoost and Tabnet scores on Yan et al's dataset
 As expected, all models achieved very high recall. However, XGBoost from the article (with Neutrophil) had significantly worse performance than XGBoost with Age variable. A similar situation occurred with Tabnet models. 
 Overall, XGBoost with the hyperparameters proposed by Zichao Zheng et al. but trained on data with Age column in the place of Neutrophil had best results with 0.942 AUC and 0.918 AUPRC. 
 
-```{r 5-1-AUPRC2, out.width="700", fig.align="center", echo=FALSE, fig.cap='AUPRC results on  Yan et al dataset. Models with 'Age' variable are more effective in mortality prediction.'}
+```{r 5-1-AUPRC2, out.width="700", fig.align="center", echo=FALSE, fig.cap='AUPRC results on  Yan et al dataset. Models with Age variable are more effective in mortality prediction.'}
 knitr::include_graphics('images/5-1-AUPRC2.png')
 ```
 ### Conclusions
