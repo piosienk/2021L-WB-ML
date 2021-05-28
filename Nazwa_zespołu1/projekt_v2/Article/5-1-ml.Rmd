@@ -18,14 +18,15 @@ The article [@yan_et_al_2020] received several replies, scientists from the USA,
 The datasets from corresponding articles contained 3 previously highlighted features, in datasets from [@5-2-france] and [@5-2-newyork] there are multiple test results and other useful features such as age, but information about other blood components is not included. The data from [@5-2-newyork] was especially helpful, the data was shared to us after consultation with one of the article's authors. The data came from Northwell Health, New York State's largest hospital network serving 11 million patients and contained 1038 records.
 
 
-Table 1 contains all most important information about each of datasets and shows which of them contains features needed to create models.
-| Article         | Records | Variables | Lactate Dehyd.|C-protein | Lymphocytes| Neutrophil | Age |
-|-----------------|:-------:|:---------:|:--------------:|:--------:|:----------:|:----------:|:---:|
-|[@yan_et_al_2020]|485|81|Yes|Yes|Yes|Yes| Yes |
-|[@5-2-newyork]   |1038|14|Yes|Yes|Yes|No| No  |
-|[@5-2-netherlands]|305|15|Yes|Yes|Yes|No| Yes |
-|[@5-2-france]    |178|43| Yes|Yes|Yes|No| Yes |
-|[@5-1-ZHENG2020100092]|214|33|Yes|Yes|Yes| Yes| Yes |
+Table: Table 1: contains all most important information about each of datasets and shows which of them contains features needed to create models.
+
+| Article              | Records | Variables | Lactate Dehyd.|C-protein | Lymphocytes| Neutrophil | Age |
+|----------------------|:-------:|:---------:|:-------------:|:--------:|:----------:|:----------:|:---:|
+|[@yan_et_al_2020]     |485      |81         |Yes            |Yes       |Yes         |Yes         | Yes |
+|[@5-2-newyork]        |1038     |14         |Yes            |Yes       |Yes         |No          | No  |
+|[@5-2-netherlands]    |305      |15         |Yes            |Yes       |Yes         |No          | Yes |
+|[@5-2-france]         |178      |43         |Yes            |Yes       |Yes         |No          | Yes |
+|[@5-1-ZHENG2020100092]|214      |33         |Yes            |Yes       |Yes         |Yes         | Yes |
 
 Careful inspection of distributions of these key variables from various articles helps to understand problem with applying model form [china] on dataset from corresponding articles.
 
