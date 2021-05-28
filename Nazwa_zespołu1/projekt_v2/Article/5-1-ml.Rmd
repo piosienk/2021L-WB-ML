@@ -80,7 +80,7 @@ Table: Table 1: Model scores on test table from merged dataset.
 
 Although the decision tree achieved high recall score (0.908), its precision is unsatisfactory. Models trained on multinational data have distinctly higher accuracy and precision thus they are more suitable for medical triage. SVM Tabnet proved to be the most efficient algorithm, having AUC at 0.91 and AUPRC at 0.824. The SVM was the worst model out of the new ones, with AUC at level 0.843 and AUPRC at 0.699.
 
-```{r 5-1-AUPRC1, out.width="700", fig.align="center", echo=FALSE, fig.cap='AUPRC results on test table from merged dataset'}
+```{r 5-1-AUPRC1, out.width="700", fig.align="center", echo=FALSE, fig.cap='AUPRC results on test table from merged dataset. Tabnet scored significantly better than Logistic Regression and SVM.'}
 knitr::include_graphics('images/5-1-AUPRC1.png')
 ```
 
@@ -101,7 +101,7 @@ Table: Table 2: XGBoost and Tabnet scores on Yan et al's dataset
 As expected, all models achieved very high recall. However, XGBoost from the article (with Neutrophil) had significantly worse performance than XGBoost with Age variable. A similar situation occurred with Tabnet models. 
 Overall, XGBoost with the hyperparameters proposed by Zichao Zheng et al. but trained on data with Age column in the place of Neutrophil had best results with 0.942 AUC and 0.918 AUPRC. 
 
-```{r 5-1-AUPRC2, out.width="700", fig.align="center", echo=FALSE, fig.cap='AUPRC results on  Yan et al dataset'}
+```{r 5-1-AUPRC2, out.width="700", fig.align="center", echo=FALSE, fig.cap='AUPRC results on  Yan et al dataset. Models with 'Age' variable are more effective in mortality prediction.'}
 knitr::include_graphics('images/5-1-AUPRC2.png')
 ```
 ### Conclusions
