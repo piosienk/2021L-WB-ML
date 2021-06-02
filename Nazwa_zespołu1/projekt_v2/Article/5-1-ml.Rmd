@@ -18,34 +18,33 @@ In our article, we describe how the datasets differ, we analyze how [@yan_et_al_
 
 ### Data description
 
-We have begun our work from analyzing article [@yan_et_al_2020], authors have created a model based on blood samples collected form 375 patients from the Wuhan region in the first quarter of 2020. Data from another 110 patients were treated as an additional test set. Dataset contains 81 variables, including 74 describing the blood tests results, but not all tests were performed on each patient. Scientists finally created a model based on three variables: lactate dehydrogenase, lymphocytes and high-sensitivity C-reactive protein, these are going to be crucial also in our work.
+We have begun our work from analyzing the  article [@yan_et_al_2020], authors have created a model based on blood samples collected form 375 patients from the Wuhan region in the first quarter of 2020. Data from another 110 patients were treated as an additional test set. The dataset contains 81 variables, including 74 describing the blood tests results, but not all tests were performed on each patient. Scientists create a model based on three variables: lactate dehydrogenase, lymphocytes and high-sensitivity C-reactive protein, these are going to be crucial also in our work.
 
-The article [@yan_et_al_2020] received several replies, scientists from the USA, France and the Netherlands validated the model on datasets from hospitals from their home countries. The results pointed to the problem of rashly predicting death for patients who eventually survived Covid-19 infection. They also claimed that the [@yan_et_al_2020] model learning from most recently performed  measurements was not an appropriate tool to prioritize ICU admissions and should therefore use results from first tests.
+The article [@yan_et_al_2020] received several replies, scientists from the USA, France and the Netherlands validated the model on datasets from hospitals from their home countries. The results point to the problem of rashly predicting death for patients who eventually survive Covid-19 infection. They also claim that the [@yan_et_al_2020] model learning from most recently performed measurements is not an appropriate tool to prioritize ICU admissions and should therefore use results from first tests.
 
-The datasets from corresponding articles contained 3 previously highlighted features, in datasets from [@5-2-france] and [@5-2-newyork] there are multiple test results and other useful features such as age, but information about other blood components is not included. The data from [@5-2-newyork] was especially helpful, the data was shared to us after consultation with one of the article's authors. The data came from Northwell Health, New York State's largest hospital network serving 11 million patients and contained 1038 records.
+The datasets from corresponding articles contained 3 previously highlighted features, in the datasets from [@5-2-france] and [@5-2-newyork] there are multiple test results and other useful features such as age, but information about other blood components is not included. The data from [@5-2-newyork] was especially helpful because of it's size, it contains informations about 1038 patients.
 
+Table 1: Description of the considered datasets and their dimensions. We highlight, which dataset contains the variables necessery to create model.
 
-Table: Table 1: contains all most important information about each of datasets and shows which of them contains features needed to create models.
+| Article              | Rows    | Variables | Lactate Dehyd.|C-protein | Lymph.| Neutrophil | Age |
+|----------------------|--------:|----------:|--------------:|---------:|------:|-----------:|----:|
+|[@yan_et_al_2020]     |485      |81         |Yes            |Yes       |Yes    |Yes         | Yes |
+|[@5-2-newyork]        |1038     |14         |Yes            |Yes       |Yes    |No          | No  |
+|[@5-2-netherlands]    |305      |15         |Yes            |Yes       |Yes    |No          | Yes |
+|[@5-2-france]         |178      |43         |Yes            |Yes       |Yes    |No          | Yes |
+|[@5-1-ZHENG2020100092]|214      |33         |Yes            |Yes       |Yes    |Yes         | Yes |
 
-| Article              | Records | Variables | Lactate Dehyd.|C-protein | Lymphocytes| Neutrophil | Age |
-|----------------------|:-------:|:---------:|:-------------:|:--------:|:----------:|:----------:|:---:|
-|[@yan_et_al_2020]     |485      |81         |Yes            |Yes       |Yes         |Yes         | Yes |
-|[@5-2-newyork]        |1038     |14         |Yes            |Yes       |Yes         |No          | No  |
-|[@5-2-netherlands]    |305      |15         |Yes            |Yes       |Yes         |No          | Yes |
-|[@5-2-france]         |178      |43         |Yes            |Yes       |Yes         |No          | Yes |
-|[@5-1-ZHENG2020100092]|214      |33         |Yes            |Yes       |Yes         |Yes         | Yes |
-
-Careful inspection of distributions of these key variables from various articles helps to understand problem with applying model form [china] on dataset from corresponding articles.
+Careful inspection of distributions of these key variables from various articles helps to understand problem with applying model form [@yan_et_al_2020] on dataset from corresponding articles.
 
 Lactate dehydrogenase was the most important feature in model from [@yan_et_al_2020], relying only on its value patients were supposed to be directed to the ICU. The chart shows that indeed distribution of sever cases is significantly shifted towards higer values in comparsion with non severe cases, but such a large difference does not occur in other datasets, patients requiring additional care usually have an increased lactate dehydrogenase, but not as much as patients from China. An interesting dependence ocuurs in the dataset from [@5-1-ZHENG2020100092], a large part of the data also comes from China, there is a great distinction between the severely and slightly ill, but the overall lactate dehydrogenase levels are much lower. Additionally, slightly ill patients from Europe and the US have higher LDH levels than severely ill patients from China.
 
-```{r 5-1-ldhDist, out.width="850", fig.align="center", echo=FALSE, fig.cap='Comparison of lactate dehydrogenase amongst datasets'}
+```{r 5-1-ldhDist, out.width="850", fig.align="center", echo=FALSE, fig.cap='Comparison of lactate dehydrogenase amongst datasets, best separation occurs in patients form China.'}
 knitr::include_graphics('images/5-1-ldhDist.png')
 ```
 
-A similar situation occurs when it comes to high-sensitivity C-reactive protein (CRP), in the dataset from [@yan_et_al_2020] the distributions are clearly shifted among themselves, but similar dependency occurs only in the data from [new]. Patients suffering from the virus slightly and severely from other countries with have less varied level of CRP.
+A similar situation occurs when it comes to high-sensitivity C-reactive protein, in the dataset from [@yan_et_al_2020] the distributions are clearly shifted among themselves, but similar dependency occurs only in the data from [@5-1-ZHENG2020100092]. Patients suffering from the virus slightly and severely from other countries with have less varied level of CRP.
 
-```{r 5-1-crpDist, out.width="850", fig.align="center", echo=FALSE, fig.cap='Comparison of high reactive C protein amongst datasets'}
+```{r 5-1-crpDist, out.width="850", fig.align="center", echo=FALSE, fig.cap='Comparison of high reactive C protein amongst datasets, again best separations occurs in dataset from [@yan_et_al_2020].'}
 knitr::include_graphics('images/5-1-crpDist.png')
 ```
 
@@ -53,19 +52,19 @@ knitr::include_graphics('images/5-1-crpDist.png')
 The same dependence occurs with lymphocytes, one additional fact about these distributions is that French do not have lower level of these cells as do patients from rest of the world.
 
 
-```{r 5-1-lymDist, out.width="850", fig.align="center", echo=FALSE, fig.cap='Comparison of lymphocytes amongst datasets'}
+```{r 5-1-lymDist, out.width="850", fig.align="center", echo=FALSE, fig.cap='Comparison of lymphocytes amongst datasets, slightly ill patients from China has much higher level of these variable than any other patients.'}
 knitr::include_graphics('images/5-1-lymDist.png')
 ```
 
-Neutrofil was not used in [china] model, but it separates sever and non-severe cases in both datasets very well.
+Neutrofil was not used in [@yan_et_al_2020] model, but it separates sever and non-severe cases in both datasets very well.
 
-```{r 5-1-neuDist, out.width="850", fig.align="center", echo=FALSE, fig.cap='Comparison of neutrophil amongst datasets'}
+```{r 5-1-neuDist, out.width="850", fig.align="center", echo=FALSE, fig.cap='Comparison of neutrophil amongst datasets, it was not used in [@yan_et_al_2020] but it separates sever and non severe cases really well.'}
 knitr::include_graphics('images/5-1-neuDist.png')
 ```
 
 Age is also crucial feature in predicting virus severity, the young people get sick more mildly than the old ones.
 
-```{r 5-1-neuAge, out.width="850", fig.align="center", echo=FALSE, fig.cap='Comparison of patients age amongst datasets'}
+```{r 5-1-neuAge, out.width="850", fig.align="center", echo=FALSE, fig.cap='Comparison of patients age amongst datasets, older people are more likely to experience the virus more severely.'}
 knitr::include_graphics('images/5-1-ageDist.png')
 ```
 
